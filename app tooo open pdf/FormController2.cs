@@ -19,24 +19,27 @@ namespace app_tooo_open_pdf
         
        
         private int _scrollDelta = 0;
-        private int maxPage = Singleton.Instance.MaxPage;
-        private string outFilleName = Singleton.Instance.OutFilleName;
-        private ViewFormController viewController;
+        private ViewFormController viewFormController;
+        
         
         public FormController2()
-        {
+        { 
+            //this.Opacity = 0.5;
             InitializeComponent();
             PictureOpen.SizeMode = PictureBoxSizeMode.Zoom;
-
+            Singleton.Instance.Page = 1;
+            
             ViewController2 viewController2 = new ViewController2(this);
-            viewController2.SetImage(outFilleName,1);
-            //this.Opacity = 0.5;
-            viewController = new ViewFormController(this);
-            this.MouseWheel += new MouseEventHandler(panel1_MouseWheel);//ew form2 loas
-
-            //  MessageBox.Show($"{maxPage}");  max page kontrola previous oraz next błąd gdy 1 strona
+            viewController2.SetImage();
+            viewFormController = new ViewFormController(this);
+            this.MouseWheel += new MouseEventHandler(panel1_MouseWheel);//ew form2 load
+            TexboxToolStripMenuItem.Text ="";
         }
 
+        private void FormController2_Load(object sender, EventArgs e)
+        {
+
+        }
         private void Form2_SizeChanged(object sender, EventArgs e)
         {
            // label1.Parent = PictureOpen;
@@ -45,13 +48,21 @@ namespace app_tooo_open_pdf
         private void Nextbt_Click(object sender, EventArgs e)
         {
             ModelControll2 modelContrroll2 = new ModelControll2();
-            modelContrroll2.BTNext(this);
+            modelContrroll2.BTNext();
+            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
+            modelConvertAndSize.IsPageInNumbers(this, Singleton.Instance.Page);
+            ViewController2 viewController2 = new ViewController2(this);
+            viewController2.SetImage();
         }
 
         public void Previousbt_Click(object sender, EventArgs e)
         {
             ModelControll2 modelContrroll2 = new ModelControll2();
-            modelContrroll2.BtPrevious(this);
+            modelContrroll2.BtPrevious();
+            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
+            modelConvertAndSize.IsPageInNumbers(this,Singleton.Instance.Page);
+            ViewController2 viewController2 = new ViewController2(this);
+            viewController2.SetImage();
         }
         
         private void panel1_MouseWheel(object sender, MouseEventArgs e)
@@ -79,77 +90,75 @@ namespace app_tooo_open_pdf
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void AddPageFromLabelAndConttexAddPage_Click(object sender, EventArgs e)
         {
-            // Pobierz obraz wyświetlany w kontrolce PictureBox
-            // Image image = PictureOpen.Image;
-
-            // Utwórz obiekt Graphics dla obrazu  nie działa z skanami imao
-            //using (Graphics graphics = Graphics.FromImage(image))
-            //{
-            //    // Ustaw kolor i czcionkę
-            //    Brush brush = new SolidBrush(Color.Black);
-            //    Font font = new Font("Arial", 25);
-
-            //    // Narysuj tekst w lewym górnym rogu obrazu
-            //    string text = $"Strona {currentPageNumber} z {maxPage2}";
-            //    graphics.DrawString(text, font, brush, new PointF(10, 10));
-            //}
-
-            //// Ustaw obraz z powrotem do kontrolki PictureBox
-            //PictureOpen.Image = image;
+            ViewController2 viewController2 = new ViewController2(this);
+            viewController2.TollStriptTextADD();
         }
-
-    
-
      
 
-        private void konwertujDoA3ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PictureOpen_Click(object sender, EventArgs e)
         {
-          
-            // Tworzenie zmiennej menuItem, która przechowuje obiekt ToolStripMenuItem z opcją "konwertujDoA3ToolStripMenuItem"
-            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
-
-            // Ustawienie właściwości Checked na przeciwną wartość obecnej opcji
-            menuItem.Checked = !menuItem.Checked;
-            //string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);
-
-            //string where = System.IO.Path.Combine(a, $"{filenameWithoutExtension}_page{textBox1.Text}.png");
-            //ModelCusttomMesage modelCusttomMesage = new ModelCusttomMesage(where);
-            //modelCusttomMesage.ShowCustomMessageBox();
-            //ModelSize model = new ModelSize();
-
-            ////  w zależność od wyboru w menu
-            //model.Sizefor4(where);
-
+            
+        }
+        private void PictureOpen_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                // Wyświetlenie menu kontekstowego w pozycji kursora myszy
+                ContextMenuStrip.Show(Cursor.Position);
+            }
+        }
+        private void PanelMouseSupport_MouseDown(object sender, MouseEventArgs e)
+        {
+       
+        }
+        private void TexboxToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            TexboxToolStripMenuItem.SelectionStart = TexboxToolStripMenuItem.Text.Length;
         }
 
-        private void kowertujDoA4ToolStripMenuItem_Click(object sender, EventArgs e)
-        {// Tworzenie zmiennej menuItem, która przechowuje obiekt ToolStripMenuItem z opcją "konwertujDoA3ToolStripMenuItem"
-            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
-
-            // Ustawienie właściwości Checked na przeciwną wartość obecnej opcji
-            menuItem.Checked = !menuItem.Checked;
-            //string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);
-
-            //string where = System.IO.Path.Combine(a, $"{filenameWithoutExtension}_page{textBox1.Text}.png");
-            //ModelCusttomMesage modelCusttomMesage = new ModelCusttomMesage(where);
-            //modelCusttomMesage.ShowCustomMessageBox();
-            //ModelSize model = new ModelSize();
-
-            ////  w zależność od wyboru w menu
-            //model.Sizefor4(where);
-
-        }
-        private void toolStripTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void TexboxToolStripMenuItem_KeyDown(object sender, KeyEventArgs e)
         {
-            int cursorPos = toolStripTextBox1.SelectionStart;
+            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+            {
+                TexboxToolStripMenuItem.SelectionStart = TexboxToolStripMenuItem.Text.Length;
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Back)
+            {
+                int cursorPos = TexboxToolStripMenuItem.SelectionStart;
+                int commaPos = TexboxToolStripMenuItem.Text.LastIndexOf(',', cursorPos - 1);
+                if (commaPos == -1 || cursorPos - commaPos == 1)
+                {
+                    TexboxToolStripMenuItem.Text = "";
+                }
+                else
+                {
+                    int newCommaPos = TexboxToolStripMenuItem.Text.LastIndexOf(',', commaPos - 1);
+                    if (newCommaPos == -1)
+                    {
+                        TexboxToolStripMenuItem.Text = TexboxToolStripMenuItem.Text.Substring(0, commaPos + 1);
+                    }
+                    else
+                    {
+                        TexboxToolStripMenuItem.Text = TexboxToolStripMenuItem.Text.Substring(0, newCommaPos + 1) + TexboxToolStripMenuItem.Text.Substring(commaPos + 1);
+                    }
+                }
+                TexboxToolStripMenuItem.SelectionStart = TexboxToolStripMenuItem.Text.Length;
+                e.Handled = true;
+            }
+        }
+
+        private void TexboxToolStripMenuItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int cursorPos = TexboxToolStripMenuItem.SelectionStart;
 
             // jeśli wpisano spację, to dodaj przecinek przed nią
-            if (e.KeyChar == ' ' && cursorPos > 0 && char.IsDigit(toolStripTextBox1.Text[cursorPos - 1]))
-            {
-                toolStripTextBox1.Text = toolStripTextBox1.Text.Insert(cursorPos, ", ");
-                toolStripTextBox1.SelectionStart = cursorPos + 2;
+            if (e.KeyChar == ' ' && cursorPos > 0 && char.IsDigit(TexboxToolStripMenuItem.Text[cursorPos - 1]))
+            {   
+                TexboxToolStripMenuItem.Text = TexboxToolStripMenuItem.Text.Insert(cursorPos, ", ");
+                TexboxToolStripMenuItem.SelectionStart = cursorPos + 2;
                 e.Handled = true;
             }
             // sprawdzenie czy wpisany znak to cyfra lub spacja
@@ -159,42 +168,63 @@ namespace app_tooo_open_pdf
                 return;
             }
             // zablokuj dodawanie spacji jeśli nie ma cyfry przed nią
-            else if (e.KeyChar == ' ' && (cursorPos == 0 || !char.IsDigit(toolStripTextBox1.Text[cursorPos - 1])))
+            else if (e.KeyChar == ' ' && (cursorPos == 0 || !char.IsDigit(TexboxToolStripMenuItem.Text[cursorPos - 1])))
             {
                 e.Handled = true;
                 return;
             }
         }
-        private void label1_Click(object sender, EventArgs e)
+        private void TexboxToolStripMenuItem_TextChanged(object sender, EventArgs e)
+        {
+            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
+            modelConvertAndSize.IsPageInNumbers(this, Singleton.Instance.Page);
+            ViewController2 viewController2 = new ViewController2(this);
+            viewController2.IsGreen();
+        }
+        private void A3_And_A2_Menu_Click(object sender, EventArgs e)
         {
             ViewController2 viewController2 = new ViewController2(this);
-            viewController2.TollStriptTextADD();
+            viewController2.CheckedMenuOption(sender);
         }
 
-        private void kONWERTUJToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void SkirtsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // konwersja tego co w textbox
+            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
+            modelConvertAndSize.Skirts(this);
         }
 
-        private void toolStripTextBox1_MouseDown(object sender, MouseEventArgs e)
+        private void A4x2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            toolStripTextBox1.SelectionStart = toolStripTextBox1.Text.Length;
+
+            ModelConvertAndSize modelConvertAndSize= new ModelConvertAndSize();
+            modelConvertAndSize.Where(Singleton.Instance.Page);
+            modelConvertAndSize.SizeforA3();
         }
 
-        private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
+        private void A4x4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
-            {
-                toolStripTextBox1.SelectionStart = toolStripTextBox1.Text.Length;
-                e.Handled = true;
-            }
-        }
-
-        private void PictureOpen_Click(object sender, EventArgs e)
-        {
-            label1_Click(sender, e);
+            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
+            modelConvertAndSize.Where(Singleton.Instance.Page);
+            modelConvertAndSize.SizeforA2();
         }
     }
 }
 
 
+// Pobierz obraz wyświetlany w kontrolce PictureBox
+// Image image = PictureOpen.Image;
+
+// Utwórz obiekt Graphics dla obrazu  nie działa z skanami imao
+//using (Graphics graphics = Graphics.FromImage(image))
+//{
+//    // Ustaw kolor i czcionkę
+//    Brush brush = new SolidBrush(Color.Black);
+//    Font font = new Font("Arial", 25);
+
+//    // Narysuj tekst w lewym górnym rogu obrazu
+//    string text = $"Strona {currentPageNumber} z {maxPage2}";
+//    graphics.DrawString(text, font, brush, new PointF(10, 10));
+//}
+
+//// Ustaw obraz z powrotem do kontrolki PictureBox
+//PictureOpen.Image = image;

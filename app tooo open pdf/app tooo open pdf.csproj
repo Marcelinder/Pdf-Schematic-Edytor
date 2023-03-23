@@ -73,9 +73,8 @@
       <DependentUpon>FormController2.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelControll2.cs" />
-    <Compile Include="ModelCusttomMesage.cs" />
-    <Compile Include="ModelSize.cs" />
-    <Compile Include="ModelConvert.cs" />
+    <Compile Include="XModelCusttomMesage.cs" />
+    <Compile Include="ModelConvertAndSize.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton .cs" />

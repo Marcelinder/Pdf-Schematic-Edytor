@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace app_tooo_open_pdf
 {
-    internal class ModelCusttomMesage
+    internal class XModelCusttomMesage
     {
         //private Form form;
         string _where;
 
-        public ModelCusttomMesage(string where) 
+        public XModelCusttomMesage(string where) 
         {
             _where = where;  
         }

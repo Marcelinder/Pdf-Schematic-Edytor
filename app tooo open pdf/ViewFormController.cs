@@ -14,13 +14,12 @@ namespace app_tooo_open_pdf
     {
         private Form form;
         public bool isMouseDown = false;
-      
-      //  private const int WM_NCHITTEST = 0x0084;
-       // private const int WM_SIZING = 0x0214;
+        //private const int BORDER_WIDTH = 8;
+        //private const int WM_NCHITTEST = 0x0084;
+        // private const int WM_SIZING = 0x0214;
         private const int HTBOTTOMRIGHT = 17;
         private const int HTBOTTOM = 15;
         private const int HTRIGHT = 11;
-        //private const int BORDER_WIDTH = 8;
         const int HTTOPLEFT = 13;
         const int HTBOTTOMLEFT = 16;
         const int HTLEFT = 10;
@@ -39,13 +38,10 @@ namespace app_tooo_open_pdf
             this.form = form;
             AssignHandle(form.Handle); // Przypisz uchwyt formularza do tej klasy
 
-            Color leadingColor = SystemColors.ActiveBorder; //bliski najbliższy kolor do systemowego
-                                                            // Enable file drag and drop on the form
-
+           // Color leadingColor = SystemColors.ActiveBorder; //bliski najbliższy kolor do systemowego  Nie używane
 
             // Dodaj obsługę zdarzeń dla wszystkich formularzy
             form.MouseDown += Form_MouseDown;
-
 
             // Dodaj obsługę zdarzeń specyficznych dla formularza 1
             if (form is FormController1 form1)
@@ -103,9 +99,6 @@ namespace app_tooo_open_pdf
         {
             form.WindowState = FormWindowState.Minimized;
         }
-
-
- 
 
         private void Form_MouseDown(object sender, MouseEventArgs e)
         {
@@ -243,11 +236,11 @@ namespace app_tooo_open_pdf
             }
         }
 
-        private void Form1_DragDrop(object sender, DragEventArgs e)
+        public void Form1_DragDrop(object sender, DragEventArgs e)
         {
             // Get the file path from the data being dropped
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop);
-           string filePath = filePaths[0];
+            string filePath = filePaths[0];
             // Pobierz istniejącą instancję kontrolera
 
             // aktualizacja wartości pola FilePath w klasie Singleton
@@ -255,7 +248,6 @@ namespace app_tooo_open_pdf
 
             // zapisanie wartości pola FilePath do pliku w klasie Singleton
             Singleton.Instance.SaveToFile();
-
         }
       
     }

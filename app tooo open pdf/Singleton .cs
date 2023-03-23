@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,12 +15,16 @@ namespace app_tooo_open_pdf
         private static string directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
         private static string filename = "AllVaribles.txt";
         public string VariableStoragePath = Path.Combine(directory, filename);
-        private int maxPage;
-        private int page;
-        private string filePath;
         public string outPutDirectory = "C:\\ConvertedImages";
         private string outFilleName;
-        
+        private string newFilleName;
+        private string filePath = Path.Combine(directory, "pdfseting.pdf");
+        private int maxPage;
+        private int page;
+        private bool isPageInNumbers;
+
+
+
         private Singleton()
         {
             // konstruktor prywatny, aby uniemożliwić tworzenie nowych instancji
@@ -36,7 +41,11 @@ namespace app_tooo_open_pdf
                 return instance;
             }
         }
-
+        public bool IsPageInNumbers
+        {
+            get { return isPageInNumbers; }
+            set { isPageInNumbers = value; }
+        }
         public int MaxPage
         {
             get { return maxPage; }
@@ -65,7 +74,11 @@ namespace app_tooo_open_pdf
             get { return outFilleName; }
             set { outFilleName = value; }
         }
-        
+        public string NewFilleName
+        {
+            get { return newFilleName; }
+            set { newFilleName = value; }
+        }
 
         public void SaveToFile()
         {
@@ -76,6 +89,8 @@ namespace app_tooo_open_pdf
                 sw.WriteLine("filePath=" + filePath);
                 sw.WriteLine("outPutDirectory=" + outPutDirectory);
                 sw.WriteLine("outFilleName=" +  outFilleName);
+                sw.WriteLine("newFilleName=" + newFilleName);
+                sw.WriteLine("isPageInNumbers=" + isPageInNumbers);
             }
             //ModelCusttomMesage model = new ModelCusttomMesage(VariableStoragePath);
             //model.ShowCustomMessageBox();
@@ -111,6 +126,13 @@ namespace app_tooo_open_pdf
                             case "outFilleName":
                                 outFilleName = fieldValue;
                                 break;
+                            case "newFilleName":
+                                newFilleName = fieldValue;
+                                break;
+                            case "isPageInNumbers":
+                                isPageInNumbers = bool.Parse(fieldValue);
+                                break;
+
                         }
                     }
                 }

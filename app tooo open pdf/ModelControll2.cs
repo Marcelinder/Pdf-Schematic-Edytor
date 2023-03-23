@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace app_tooo_open_pdf
 {
@@ -15,34 +16,33 @@ namespace app_tooo_open_pdf
     {
         private const string FileNamePattern = @"_page(\d+)\.\w+$";
         private const string PageNumberReplacementPattern = "_page{0}.";
-        string outFilleName = Singleton.Instance.OutFilleName;
-        int maxPage = Singleton.Instance.MaxPage;
-        private string newFilePath;
+        readonly string outFilleName = Singleton.Instance.OutFilleName;
+        readonly int maxPage = Singleton.Instance.MaxPage;
+        int pageNumber;
 
         public ModelControll2() {  }
 
-        private string GetFilePathForPageNumber(int pageNumber)
-        {
-            return Regex.Replace(outFilleName, string.Format(PageNumberReplacementPattern, GetCurrentPageNumber(outFilleName)), string.Format(PageNumberReplacementPattern, pageNumber));
-        }
-        private void NavigateToPage(FormController2 formController, int pageNumber)
-        {
-            newFilePath = GetFilePathForPageNumber(pageNumber);
-            ViewCallSet(formController, pageNumber);
-        }
-
-        public void BTNext(FormController2 formController)
+    
+        public void BTNext()
         {
             int currentPageNumber = GetCurrentPageNumber(outFilleName);
             int nextPageNumber = currentPageNumber + 1;
-            NavigateToPage(formController, File.Exists(GetFilePathForPageNumber(nextPageNumber)) ? nextPageNumber : 1);
+            pageNumber = File.Exists(GetFilePathForPageNumber(nextPageNumber)) ? nextPageNumber : 1;
+            SingletonUpdate();
         }
 
-        public void BtPrevious(FormController2 formController)
+        public void BtPrevious()
         {
             int currentPageNumber = GetCurrentPageNumber(outFilleName);
             int previousPageNumber = currentPageNumber - 1;
-            NavigateToPage(formController, File.Exists(GetFilePathForPageNumber(previousPageNumber)) ? previousPageNumber : maxPage);
+            pageNumber = File.Exists(GetFilePathForPageNumber(previousPageNumber)) ? previousPageNumber : maxPage;
+            SingletonUpdate();
+        }
+
+        private void SingletonUpdate()
+        {
+            Singleton.Instance.Page = pageNumber;
+            Singleton.Instance.NewFilleName = GetFilePathForPageNumber(pageNumber);
         }
 
         private int GetCurrentPageNumber(string fileName)
@@ -52,10 +52,9 @@ namespace app_tooo_open_pdf
             return currentPageNumber;
         }
 
-        private void ViewCallSet(FormController2 formController, int page)
+        private string GetFilePathForPageNumber(int pageNumber)
         {
-            ViewController2 viewController2 = new ViewController2(formController);
-            viewController2.SetImage(newFilePath,page);
+            return Regex.Replace(outFilleName, string.Format(PageNumberReplacementPattern, GetCurrentPageNumber(outFilleName)), string.Format(PageNumberReplacementPattern, pageNumber));
         }
     }
 

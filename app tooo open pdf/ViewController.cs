@@ -21,7 +21,7 @@ namespace app_tooo_open_pdf
     public class ViewController
     {
       
-        public Image imageInBox;
+        
         private FormController1 formController;
         public ViewController(FormController1 formController)
         {
@@ -47,22 +47,28 @@ namespace app_tooo_open_pdf
                 // zapisanie wartości pola FilePath do pliku w klasie Singleton
                 Singleton.Instance.SaveToFile();
             }
-          
         }
 
-        public void UpdatePicturebox()
+        public void UpdateWebBrowser()
         {
-            string filePath = Singleton.Instance.FilePath;
-            string saveWhere = Singleton.Instance.OutPutDirectory;
-            imageInBox = System.Drawing.Image.FromFile($"{saveWhere}" + "/" + $"{System.IO.Path.GetFileNameWithoutExtension(filePath)}_page1.png");
-            //// przypisz obraz do kontrolki PictureBox
-           Update(imageInBox);
+            formController.WebBrowser1.Navigate(Singleton.Instance.FilePath);
         }
+        public void CheckedMenuOption(object sender) 
+        {
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
 
-       public void Update(Image imageInBox)
-       {
-                formController.pictureBox1.Image = imageInBox;
-                formController.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-       }
+
+            if (menuItem == formController.ConvertFastToolStripMenuItem1)
+            {
+                menuItem.Checked = !menuItem.Checked;
+                formController.ConvertSlowToolStripMenuItem1.Checked = false;
+            }
+            else
+            if (menuItem == formController.ConvertSlowToolStripMenuItem1)
+            {
+                menuItem.Checked = !menuItem.Checked;
+                formController.ConvertFastToolStripMenuItem1.Checked = false;
+            }
+        }
     }
 }
