@@ -56,10 +56,11 @@ namespace app_tooo_open_pdf
             Singleton.Instance.OutFilleName = outFilleName;
             Singleton.Instance.NewFilleName = outFilleName;
             // Utworzenie nowego obiektu Form2
-            FormController2 form2 = new FormController2();
-          
-            // Wywołanie metody Show() lub ShowDialog() na nowym obiekcie Form2
-            form2.TopLevel = true;
+            FormController2 form2 = new FormController2
+            {
+                // Wywołanie metody Show() lub ShowDialog() na nowym obiekcie Form2
+                TopLevel = true
+            };
             form2.Show();
         }
 
@@ -79,17 +80,7 @@ namespace app_tooo_open_pdf
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-        }
-
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

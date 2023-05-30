@@ -26,19 +26,20 @@ namespace app_tooo_open_pdf
         { 
             //this.Opacity = 0.5;
             InitializeComponent();
-            PictureOpen.SizeMode = PictureBoxSizeMode.Zoom;
-            Singleton.Instance.Page = 1;
-            
-            ViewController2 viewController2 = new ViewController2(this);
-            viewController2.SetImage();
-            viewFormController = new ViewFormController(this);
-            this.MouseWheel += new MouseEventHandler(panel1_MouseWheel);//ew form2 load
-            TexboxToolStripMenuItem.Text ="";
         }
 
         private void FormController2_Load(object sender, EventArgs e)
         {
 
+            PictureOpen.SizeMode = PictureBoxSizeMode.Zoom;
+            Singleton.Instance.Page = 1;
+            ViewController2 viewController2 = new ViewController2(this);
+            viewController2.SetImage();
+
+            viewFormController = new ViewFormController(this);
+            this.MouseWheel += new MouseEventHandler(Controller_MouseWheel);
+
+            TexboxToolStripMenuItem.Text = "";
         }
         private void Form2_SizeChanged(object sender, EventArgs e)
         {
@@ -65,7 +66,7 @@ namespace app_tooo_open_pdf
             viewController2.SetImage();
         }
         
-        private void panel1_MouseWheel(object sender, MouseEventArgs e)
+        private void Controller_MouseWheel(object sender, MouseEventArgs e)
         {
             // Obliczenie liczby linii do przesunięcia na podstawie wartości Delta myszy i ustawienia liczby linii przewijania kółka myszy w systemie.
             int numberOfTextLinesToMove = e.Delta * SystemInformation.MouseWheelScrollLines / 80;

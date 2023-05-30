@@ -38,20 +38,20 @@
             this.A4x4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.A4x2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ColorDot = new System.Windows.Forms.Label();
-            this.labelPageAndMaxPage = new System.Windows.Forms.Label();
+            this.LabelPageAndMaxPage = new System.Windows.Forms.Label();
             this.PictureOpen = new System.Windows.Forms.PictureBox();
-            this.minimizeBt = new System.Windows.Forms.Button();
-            this.maximizeBt = new System.Windows.Forms.Button();
-            this.closeBt = new System.Windows.Forms.Button();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MinimizeBt = new System.Windows.Forms.Button();
+            this.MaximizeBt = new System.Windows.Forms.Button();
+            this.CloseBt = new System.Windows.Forms.Button();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.MenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EnlargeMakeA2AndDivideIntoA4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EnlargeMakeA3AndDivideIntoA4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TexboxToolStripMenuItem = new System.Windows.Forms.ToolStripTextBox();
             this.SkirtsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureOpen)).BeginInit();
-            this.menuStrip.SuspendLayout();
+            this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // Nextbt
@@ -118,14 +118,14 @@
             // A4x4ToolStripMenuItem
             // 
             this.A4x4ToolStripMenuItem.Name = "A4x4ToolStripMenuItem";
-            this.A4x4ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.A4x4ToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.A4x4ToolStripMenuItem.Text = "A4 x 4";
             this.A4x4ToolStripMenuItem.Click += new System.EventHandler(this.A4x4ToolStripMenuItem_Click);
             // 
             // A4x2ToolStripMenuItem
             // 
             this.A4x2ToolStripMenuItem.Name = "A4x2ToolStripMenuItem";
-            this.A4x2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.A4x2ToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.A4x2ToolStripMenuItem.Text = "A4 x 2";
             this.A4x2ToolStripMenuItem.Click += new System.EventHandler(this.A4x2ToolStripMenuItem_Click);
             // 
@@ -141,20 +141,20 @@
             this.ColorDot.TabIndex = 1;
             this.ColorDot.Text = "h";
             // 
-            // labelPageAndMaxPage
+            // LabelPageAndMaxPage
             // 
-            this.labelPageAndMaxPage.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelPageAndMaxPage.BackColor = System.Drawing.Color.IndianRed;
-            this.labelPageAndMaxPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPageAndMaxPage.ForeColor = System.Drawing.Color.White;
-            this.labelPageAndMaxPage.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.labelPageAndMaxPage.Location = new System.Drawing.Point(351, 7);
-            this.labelPageAndMaxPage.Name = "labelPageAndMaxPage";
-            this.labelPageAndMaxPage.Size = new System.Drawing.Size(141, 18);
-            this.labelPageAndMaxPage.TabIndex = 0;
-            this.labelPageAndMaxPage.Text = "Jebac pis";
-            this.labelPageAndMaxPage.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.labelPageAndMaxPage.Click += new System.EventHandler(this.AddPageFromLabelAndConttexAddPage_Click);
+            this.LabelPageAndMaxPage.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LabelPageAndMaxPage.BackColor = System.Drawing.Color.IndianRed;
+            this.LabelPageAndMaxPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.LabelPageAndMaxPage.ForeColor = System.Drawing.Color.White;
+            this.LabelPageAndMaxPage.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.LabelPageAndMaxPage.Location = new System.Drawing.Point(351, 7);
+            this.LabelPageAndMaxPage.Name = "LabelPageAndMaxPage";
+            this.LabelPageAndMaxPage.Size = new System.Drawing.Size(141, 18);
+            this.LabelPageAndMaxPage.TabIndex = 0;
+            this.LabelPageAndMaxPage.Text = "Jebac pis";
+            this.LabelPageAndMaxPage.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelPageAndMaxPage.Click += new System.EventHandler(this.AddPageFromLabelAndConttexAddPage_Click);
             // 
             // PictureOpen
             // 
@@ -171,85 +171,85 @@
             this.PictureOpen.Click += new System.EventHandler(this.PictureOpen_Click);
             this.PictureOpen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureOpen_MouseDown);
             // 
-            // minimizeBt
+            // MinimizeBt
             // 
-            this.minimizeBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minimizeBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.minimizeBt.FlatAppearance.BorderSize = 0;
-            this.minimizeBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimizeBt.Font = new System.Drawing.Font("Marlett", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.minimizeBt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.minimizeBt.Location = new System.Drawing.Point(739, 0);
-            this.minimizeBt.Margin = new System.Windows.Forms.Padding(0);
-            this.minimizeBt.Name = "minimizeBt";
-            this.minimizeBt.Size = new System.Drawing.Size(27, 26);
-            this.minimizeBt.TabIndex = 18;
-            this.minimizeBt.Text = "0";
-            this.minimizeBt.UseVisualStyleBackColor = false;
+            this.MinimizeBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinimizeBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.MinimizeBt.FlatAppearance.BorderSize = 0;
+            this.MinimizeBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MinimizeBt.Font = new System.Drawing.Font("Marlett", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.MinimizeBt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MinimizeBt.Location = new System.Drawing.Point(739, 0);
+            this.MinimizeBt.Margin = new System.Windows.Forms.Padding(0);
+            this.MinimizeBt.Name = "MinimizeBt";
+            this.MinimizeBt.Size = new System.Drawing.Size(27, 26);
+            this.MinimizeBt.TabIndex = 18;
+            this.MinimizeBt.Text = "0";
+            this.MinimizeBt.UseVisualStyleBackColor = false;
             // 
-            // maximizeBt
+            // MaximizeBt
             // 
-            this.maximizeBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maximizeBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.maximizeBt.FlatAppearance.BorderSize = 0;
-            this.maximizeBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.maximizeBt.Font = new System.Drawing.Font("Marlett", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.maximizeBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.maximizeBt.Location = new System.Drawing.Point(765, 0);
-            this.maximizeBt.Margin = new System.Windows.Forms.Padding(0);
-            this.maximizeBt.Name = "maximizeBt";
-            this.maximizeBt.Size = new System.Drawing.Size(35, 27);
-            this.maximizeBt.TabIndex = 19;
-            this.maximizeBt.Text = "1";
-            this.maximizeBt.UseVisualStyleBackColor = false;
+            this.MaximizeBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaximizeBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.MaximizeBt.FlatAppearance.BorderSize = 0;
+            this.MaximizeBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MaximizeBt.Font = new System.Drawing.Font("Marlett", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.MaximizeBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.MaximizeBt.Location = new System.Drawing.Point(765, 0);
+            this.MaximizeBt.Margin = new System.Windows.Forms.Padding(0);
+            this.MaximizeBt.Name = "MaximizeBt";
+            this.MaximizeBt.Size = new System.Drawing.Size(35, 27);
+            this.MaximizeBt.TabIndex = 19;
+            this.MaximizeBt.Text = "1";
+            this.MaximizeBt.UseVisualStyleBackColor = false;
             // 
-            // closeBt
+            // CloseBt
             // 
-            this.closeBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.closeBt.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.closeBt.FlatAppearance.BorderSize = 0;
-            this.closeBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeBt.Font = new System.Drawing.Font("Marlett", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.closeBt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeBt.Location = new System.Drawing.Point(799, 0);
-            this.closeBt.Margin = new System.Windows.Forms.Padding(0);
-            this.closeBt.Name = "closeBt";
-            this.closeBt.Size = new System.Drawing.Size(29, 27);
-            this.closeBt.TabIndex = 20;
-            this.closeBt.Text = "r";
-            this.closeBt.UseVisualStyleBackColor = false;
+            this.CloseBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CloseBt.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CloseBt.FlatAppearance.BorderSize = 0;
+            this.CloseBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseBt.Font = new System.Drawing.Font("Marlett", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.CloseBt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CloseBt.Location = new System.Drawing.Point(799, 0);
+            this.CloseBt.Margin = new System.Windows.Forms.Padding(0);
+            this.CloseBt.Name = "CloseBt";
+            this.CloseBt.Size = new System.Drawing.Size(29, 27);
+            this.CloseBt.TabIndex = 20;
+            this.CloseBt.Text = "r";
+            this.CloseBt.UseVisualStyleBackColor = false;
             // 
-            // menuStrip
+            // MenuStrip
             // 
-            this.menuStrip.AllowMerge = false;
-            this.menuStrip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MenuStrip.AllowMerge = false;
+            this.MenuStrip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.menuStrip.AutoSize = false;
-            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(0);
-            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(828, 31);
-            this.menuStrip.TabIndex = 21;
-            this.menuStrip.Text = "menuStrip1";
+            this.MenuStrip.AutoSize = false;
+            this.MenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.MenuStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuStrip.GripMargin = new System.Windows.Forms.Padding(0);
+            this.MenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuToolStripMenuItem});
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.MenuStrip.Size = new System.Drawing.Size(828, 31);
+            this.MenuStrip.TabIndex = 21;
+            this.MenuStrip.Text = "menuStrip1";
             // 
-            // menuToolStripMenuItem
+            // MenuToolStripMenuItem
             // 
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.EnlargeMakeA2AndDivideIntoA4ToolStripMenuItem,
             this.EnlargeMakeA3AndDivideIntoA4ToolStripMenuItem,
             this.TexboxToolStripMenuItem,
             this.SkirtsToolStripMenuItem});
-            this.menuToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 27);
-            this.menuToolStripMenuItem.Text = "Menu";
+            this.MenuToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem";
+            this.MenuToolStripMenuItem.Size = new System.Drawing.Size(60, 27);
+            this.MenuToolStripMenuItem.Text = "Menu";
             // 
             // EnlargeMakeA2AndDivideIntoA4ToolStripMenuItem
             // 
@@ -296,16 +296,16 @@
             this.Controls.Add(this.ColorDot);
             this.Controls.Add(this.Previousbt);
             this.Controls.Add(this.Nextbt);
-            this.Controls.Add(this.closeBt);
-            this.Controls.Add(this.maximizeBt);
-            this.Controls.Add(this.labelPageAndMaxPage);
-            this.Controls.Add(this.minimizeBt);
-            this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.CloseBt);
+            this.Controls.Add(this.MaximizeBt);
+            this.Controls.Add(this.LabelPageAndMaxPage);
+            this.Controls.Add(this.MinimizeBt);
+            this.Controls.Add(this.MenuStrip);
             this.Controls.Add(this.PanelMouseSupport);
             this.Controls.Add(this.PictureOpen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.MainMenuStrip = this.menuStrip;
+            this.MainMenuStrip = this.MenuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormController2";
             this.Text = "Form2";
@@ -313,8 +313,8 @@
             this.SizeChanged += new System.EventHandler(this.Form2_SizeChanged);
             this.ContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PictureOpen)).EndInit();
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
+            this.MenuStrip.ResumeLayout(false);
+            this.MenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,12 +325,12 @@
         private System.Windows.Forms.Button Previousbt;
         private System.Windows.Forms.Panel PanelMouseSupport;
         public System.Windows.Forms.PictureBox PictureOpen;
-        public System.Windows.Forms.Label labelPageAndMaxPage;
-        public System.Windows.Forms.Button minimizeBt;
-        public System.Windows.Forms.Button maximizeBt;
-        public System.Windows.Forms.Button closeBt;
-        public System.Windows.Forms.MenuStrip menuStrip;
-        public System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        public System.Windows.Forms.Label LabelPageAndMaxPage;
+        public System.Windows.Forms.Button MinimizeBt;
+        public System.Windows.Forms.Button MaximizeBt;
+        public System.Windows.Forms.Button CloseBt;
+        public System.Windows.Forms.MenuStrip MenuStrip;
+        public System.Windows.Forms.ToolStripMenuItem MenuToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem EnlargeMakeA2AndDivideIntoA4ToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem EnlargeMakeA3AndDivideIntoA4ToolStripMenuItem;
         public System.Windows.Forms.ToolStripTextBox TexboxToolStripMenuItem;

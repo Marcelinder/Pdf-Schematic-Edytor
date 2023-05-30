@@ -46,10 +46,10 @@ namespace app_tooo_open_pdf
             // Dodaj obsługę zdarzeń specyficznych dla formularza 1
             if (form is FormController1 form1)
             {
-                form1.closeBt.Click += CloseButton_Click;
-                form1.maximizeBt.Click += MaximizeButton_Click;
-                form1.minimizeBt.Click += MinimizeButton_Click;
-                form1.menuStrip.MouseDown += MenuStrip_MouseDown;
+                form1.CloseBt.Click += CloseButton_Click;
+                form1.MaximizeBt.Click += MaximizeButton_Click;
+                form1.MinimizeBt.Click += MinimizeButton_Click;
+                form1.MenuStrip.MouseDown += MenuStrip_MouseDown;
         
                 form1.AllowDrop = true;  // dodawanie przez upuszczanie 
                 form1.DragEnter += Form1_DragEnter;
@@ -59,10 +59,10 @@ namespace app_tooo_open_pdf
             // Dodaj obsługę zdarzeń specyficznych dla formularza 2
             else if (form is FormController2 form2)
             {
-                form2.closeBt.Click += CloseButton_Click;
-                form2.maximizeBt.Click += MaximizeButton_Click;
-                form2.minimizeBt.Click += MinimizeButton_Click;
-                form2.menuStrip.MouseDown += MenuStrip_MouseDown;
+                form2.CloseBt.Click += CloseButton_Click;
+                form2.MaximizeBt.Click += MaximizeButton_Click;
+                form2.MinimizeBt.Click += MinimizeButton_Click;
+                form2.MenuStrip.MouseDown += MenuStrip_MouseDown;
             }
         }
  

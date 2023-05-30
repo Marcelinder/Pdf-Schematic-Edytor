@@ -43,7 +43,7 @@ namespace app_tooo_open_pdf
                 System.Drawing.Image image = System.Drawing.Image.FromFile(newFilleName);
                 formController.PictureOpen.Image = image;
                 formController.PictureOpen.SizeMode = PictureBoxSizeMode.Zoom;
-                formController.labelPageAndMaxPage.Text = $"Strona {page} z {maxPage}";
+                formController.LabelPageAndMaxPage.Text = $"Strona {page} z {maxPage}";
                 Singleton.Instance.Page = page;
                 IsGreen();
             }

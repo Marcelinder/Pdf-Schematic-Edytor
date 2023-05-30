@@ -59,21 +59,22 @@ namespace app_tooo_open_pdf
             {
                 Directory.CreateDirectory(outputDirectory);
             }
-            string filePath = Singleton.Instance.FilePath; 
+            string filePath = Singleton.Instance.FilePath;
             ////Tworze nowy obiekt settings klasy MagickReadSettings,
             ////który pozwala na ustawienie różnych opcji odczytu plików graficznych.
-            var settings = new MagickReadSettings();
+            var settings = new MagickReadSettings
+            {
+                //Ustawiam gęstość obrazu na 300 dpi,
+                //co pozwala na uzyskanie lepszej jakości obrazu
+                Density = new Density(600, 600),
 
-            //Ustawiam gęstość obrazu na 300 dpi,
-            //co pozwala na uzyskanie lepszej jakości obrazu
-            settings.Density = new Density(600, 600);
-
-            //Ustawiam tryb koloru na RGB zamiast domyślnego sRGB
-            settings.ColorSpace = ColorSpace.RGB;
-            //wygładazanie tekstu 
-            settings.TextAntiAlias = true;
-            // ustawienie formatu 
-            settings.Format = MagickFormat.Pdf;
+                //Ustawiam tryb koloru na RGB zamiast domyślnego sRGB
+                ColorSpace = ColorSpace.RGB,
+                //wygładazanie tekstu 
+                TextAntiAlias = true,
+                // ustawienie formatu 
+                Format = MagickFormat.Pdf
+            };
 
 
             ///////////wielowątkowość 30 stron tego samego pliku pdf czas około 32 sekundy o 20 sekund szybciej niż 
@@ -128,19 +129,20 @@ namespace app_tooo_open_pdf
                 Directory.CreateDirectory(outputDirectory);
             }
             string filePath = Singleton.Instance.FilePath;
-            var settings = new MagickReadSettings();
+            var settings = new MagickReadSettings
+            {
+                // Decrease density to 150 dpi for faster processing
+                Density = new Density(150, 150),
 
-            // Decrease density to 150 dpi for faster processing
-            settings.Density = new Density(150, 150);
+                // Use sRGB color space instead of RGB for faster processing
+                ColorSpace = ColorSpace.sRGB,
 
-            // Use sRGB color space instead of RGB for faster processing
-            settings.ColorSpace = ColorSpace.sRGB;
+                // Disable text anti-aliasing for faster processing
+                TextAntiAlias = false,
 
-            // Disable text anti-aliasing for faster processing
-            settings.TextAntiAlias = false;
-
-            // Set format to PDF
-            settings.Format = MagickFormat.Pdf;
+                // Set format to PDF
+                Format = MagickFormat.Pdf
+            };
 
             // Use a smaller number of threads for parallel processing
             int maxThreads = Environment.ProcessorCount;
