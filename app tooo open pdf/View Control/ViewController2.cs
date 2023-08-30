@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Media.Converters;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace app_tooo_open_pdf
+namespace PdfSchematicEditor
 {
     public class ViewController2
     {

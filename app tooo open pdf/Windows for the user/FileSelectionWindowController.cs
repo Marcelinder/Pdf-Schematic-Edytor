@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Path = System.IO.Path;
 
-namespace app_tooo_open_pdf
+namespace PdfSchematicEditor
 {
 
     public partial class FormController1 : Form

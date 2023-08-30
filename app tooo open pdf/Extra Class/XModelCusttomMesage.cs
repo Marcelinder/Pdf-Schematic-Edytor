@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace app_tooo_open_pdf
+namespace PdfSchematicEditor
 {
     internal class XModelCusttomMesage
     {

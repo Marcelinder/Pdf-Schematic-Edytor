@@ -7,7 +7,7 @@ using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace app_tooo_open_pdf
+namespace PdfSchematicEditor
 {
     public class Singleton  /// klasa zarządzająca zmiennymi zapisywanie ich w jedym miejscu by były dostepne w każdej klasie 
     {

@@ -1,4 +1,4 @@
-﻿namespace app_tooo_open_pdf
+﻿namespace PdfSchematicEditor
 {
     partial class FormController1
     {

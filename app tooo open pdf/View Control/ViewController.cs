@@ -16,7 +16,7 @@ using System.Diagnostics;
 using Path = System.IO.Path;
 using System.Security.RightsManagement;
 
-namespace app_tooo_open_pdf
+namespace PdfSchematicEditor
 {
     public class ViewController
     {

@@ -10,7 +10,7 @@ using System.Web;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace app_tooo_open_pdf
+namespace PdfSchematicEditor
 {
     internal class ModelControll2
     {

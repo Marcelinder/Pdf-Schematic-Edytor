@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Xml;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace app_tooo_open_pdf
+namespace PdfSchematicEditor
 {
     public partial class FormController2 : Form
     {

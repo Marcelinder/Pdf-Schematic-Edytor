@@ -60,11 +60,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormController1.cs">
+    <Compile Include="FileSelectionWindowController1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormController1.Designer.cs">
-      <DependentUpon>FormController1.cs</DependentUpon>
+    <Compile Include="FileSelectionWindowController1.Designer.cs">
+      <DependentUpon>FileSelectionWindowController1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormController2.cs">
       <SubType>Form</SubType>
@@ -81,8 +81,8 @@
     <Compile Include="ViewController.cs" />
     <Compile Include="ViewController2.cs" />
     <Compile Include="ViewFormController.cs" />
-    <EmbeddedResource Include="FormController1.resx">
-      <DependentUpon>FormController1.cs</DependentUpon>
+    <EmbeddedResource Include="FileSelectionWindowController1.resx">
+      <DependentUpon>FileSelectionWindowController1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormController2.resx">
       <DependentUpon>FormController2.cs</DependentUpon>

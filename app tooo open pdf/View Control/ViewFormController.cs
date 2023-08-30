@@ -1,4 +1,4 @@
-﻿using app_tooo_open_pdf;
+﻿using PdfSchematicEditor;
 using System;
 using System.Drawing;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
 
-namespace app_tooo_open_pdf
+namespace PdfSchematicEditor
 {
     public class ViewFormController : NativeWindow
     {
