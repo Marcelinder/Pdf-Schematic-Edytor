@@ -1,6 +1,6 @@
 ﻿namespace PdfSchematicEditor
 {
-    partial class FormController2
+    partial class PageSelectionAndEditingWindowController
     {
         /// <summary>
         /// Required designer variable.
@@ -88,6 +88,7 @@
             this.PanelMouseSupport.Size = new System.Drawing.Size(483, 479);
             this.PanelMouseSupport.TabIndex = 3;
             this.PanelMouseSupport.Visible = false;
+            this.PanelMouseSupport.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelMouseSupport_Paint);
             this.PanelMouseSupport.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelMouseSupport_MouseDown);
             // 
             // ContextMenuStrip
@@ -286,7 +287,7 @@
             this.SkirtsToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.SkirtsToolStripMenuItem.Click += new System.EventHandler(this.SkirtsToolStripMenuItem_Click);
             // 
-            // FormController2
+            // PageSelectionAndEditingWindowController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -307,7 +308,7 @@
             this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.MainMenuStrip = this.MenuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FormController2";
+            this.Name = "PageSelectionAndEditingWindowController";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.FormController2_Load);
             this.SizeChanged += new System.EventHandler(this.Form2_SizeChanged);

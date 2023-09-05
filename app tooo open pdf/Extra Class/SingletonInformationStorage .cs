@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace PdfSchematicEditor
 {
-    public class Singleton  /// klasa zarządzająca zmiennymi zapisywanie ich w jedym miejscu by były dostepne w każdej klasie 
+    public class SingletonInformationStorage   
     {
-        private static Singleton instance;
+        private static SingletonInformationStorage instance;
         private static string directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
         private static string filename = "AllVaribles.txt";
         public string VariableStoragePath = Path.Combine(directory, filename);
@@ -25,18 +25,15 @@ namespace PdfSchematicEditor
 
 
 
-        private Singleton()
-        {
-            // konstruktor prywatny, aby uniemożliwić tworzenie nowych instancji
-        }
+        private SingletonInformationStorage(){}
 
-        public static Singleton Instance
+        public static SingletonInformationStorage Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Singleton();
+                    instance = new SingletonInformationStorage();
                 }
                 return instance;
             }

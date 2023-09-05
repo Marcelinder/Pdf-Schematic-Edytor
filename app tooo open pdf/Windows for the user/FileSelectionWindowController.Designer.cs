@@ -1,6 +1,6 @@
 ﻿namespace PdfSchematicEditor
 {
-    partial class FormController1
+    partial class FileSelectionWindowController
     {
         /// <summary>
         /// Required designer variable.
@@ -173,7 +173,7 @@
             this.MenuStrip.Size = new System.Drawing.Size(715, 29);
             this.MenuStrip.TabIndex = 14;
             // 
-            // FormController1
+            // FileSelectionWindowController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -194,7 +194,7 @@
             this.MainMenuStrip = this.MenuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(600, 450);
-            this.Name = "FormController1";
+            this.Name = "FileSelectionWindowController";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FormController1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormController1_DragDrop);

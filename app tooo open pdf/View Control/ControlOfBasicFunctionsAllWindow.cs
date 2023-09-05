@@ -10,7 +10,7 @@ using static System.Net.WebRequestMethods;
 
 namespace PdfSchematicEditor
 {
-    public class ViewFormController : NativeWindow
+    public class ControlOfBasicFunctionsAllWindow : NativeWindow
     {
         private Form form;
         public bool isMouseDown = false;
@@ -33,7 +33,7 @@ namespace PdfSchematicEditor
         private static extern bool ReleaseCapture();
 
 
-        public ViewFormController(Form form)
+        public ControlOfBasicFunctionsAllWindow(Form form)
         {
             this.form = form;
             AssignHandle(form.Handle); // Przypisz uchwyt formularza do tej klasy
@@ -44,7 +44,7 @@ namespace PdfSchematicEditor
             form.MouseDown += Form_MouseDown;
 
             // Dodaj obsługę zdarzeń specyficznych dla formularza 1
-            if (form is FormController1 form1)
+            if (form is FileSelectionWindowController form1)
             {
                 form1.CloseBt.Click += CloseButton_Click;
                 form1.MaximizeBt.Click += MaximizeButton_Click;
@@ -57,7 +57,7 @@ namespace PdfSchematicEditor
             }
 
             // Dodaj obsługę zdarzeń specyficznych dla formularza 2
-            else if (form is FormController2 form2)
+            else if (form is PageSelectionAndEditingWindowController form2)
             {
                 form2.CloseBt.Click += CloseButton_Click;
                 form2.MaximizeBt.Click += MaximizeButton_Click;
@@ -243,17 +243,12 @@ namespace PdfSchematicEditor
             string filePath = filePaths[0];
             // Pobierz istniejącą instancję kontrolera
 
-            // aktualizacja wartości pola FilePath w klasie Singleton
-            Singleton.Instance.FilePath = filePath;
+            // aktualizacja wartości pola FilePath w klasie SingletonInformationStorage
+            SingletonInformationStorage.Instance.FilePath = filePath;
 
-            // zapisanie wartości pola FilePath do pliku w klasie Singleton
-            Singleton.Instance.SaveToFile();
+            // zapisanie wartości pola FilePath do pliku w klasie SingletonInformationStorage
+            SingletonInformationStorage.Instance.SaveToFile();
         }
       
     }
 }
-//Color borderColor = Color.FromArgb(74, 84, 89);
-//menuStrip.BackColor = borderColor;
-//maximizeButton.BackColor = borderColor;
-//minimizeButton.BackColor = borderColor;
-//closeButton.BackColor = borderColor;

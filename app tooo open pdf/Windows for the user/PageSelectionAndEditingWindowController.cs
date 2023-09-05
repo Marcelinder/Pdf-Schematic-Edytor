@@ -14,15 +14,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PdfSchematicEditor
 {
-    public partial class FormController2 : Form
+    public partial class PageSelectionAndEditingWindowController : Form
     {
         
        
         private int _scrollDelta = 0;
-        private ViewFormController viewFormController;
+        private ControlOfBasicFunctionsAllWindow viewFormController;
         
         
-        public FormController2()
+        public PageSelectionAndEditingWindowController()
         { 
             //this.Opacity = 0.5;
             InitializeComponent();
@@ -32,11 +32,11 @@ namespace PdfSchematicEditor
         {
 
             PictureOpen.SizeMode = PictureBoxSizeMode.Zoom;
-            Singleton.Instance.Page = 1;
-            ViewController2 viewController2 = new ViewController2(this);
+            SingletonInformationStorage.Instance.Page = 1;
+            SecondWindowSupport viewController2 = new SecondWindowSupport(this);
             viewController2.SetImage();
 
-            viewFormController = new ViewFormController(this);
+            viewFormController = new ControlOfBasicFunctionsAllWindow(this);
             this.MouseWheel += new MouseEventHandler(Controller_MouseWheel);
 
             TexboxToolStripMenuItem.Text = "";
@@ -48,21 +48,21 @@ namespace PdfSchematicEditor
         }
         private void Nextbt_Click(object sender, EventArgs e)
         {
-            ModelControll2 modelContrroll2 = new ModelControll2();
+            LogicButtonAndSave modelContrroll2 = new LogicButtonAndSave();
             modelContrroll2.BTNext();
-            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
-            modelConvertAndSize.IsPageInNumbers(this, Singleton.Instance.Page);
-            ViewController2 viewController2 = new ViewController2(this);
+            LogicSupportingPageEditionsSelectedByTheUser modelConvertAndSize = new LogicSupportingPageEditionsSelectedByTheUser();
+            modelConvertAndSize.IsPageInNumbers(this, SingletonInformationStorage.Instance.Page);
+            SecondWindowSupport viewController2 = new SecondWindowSupport(this);
             viewController2.SetImage();
         }
 
         public void Previousbt_Click(object sender, EventArgs e)
         {
-            ModelControll2 modelContrroll2 = new ModelControll2();
+            LogicButtonAndSave modelContrroll2 = new LogicButtonAndSave();
             modelContrroll2.BtPrevious();
-            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
-            modelConvertAndSize.IsPageInNumbers(this,Singleton.Instance.Page);
-            ViewController2 viewController2 = new ViewController2(this);
+            LogicSupportingPageEditionsSelectedByTheUser modelConvertAndSize = new LogicSupportingPageEditionsSelectedByTheUser();
+            modelConvertAndSize.IsPageInNumbers(this,SingletonInformationStorage.Instance.Page);
+            SecondWindowSupport viewController2 = new SecondWindowSupport(this);
             viewController2.SetImage();
         }
         
@@ -93,7 +93,7 @@ namespace PdfSchematicEditor
 
         private void AddPageFromLabelAndConttexAddPage_Click(object sender, EventArgs e)
         {
-            ViewController2 viewController2 = new ViewController2(this);
+            SecondWindowSupport viewController2 = new SecondWindowSupport(this);
             viewController2.TollStriptTextADD();
         }
      
@@ -177,36 +177,41 @@ namespace PdfSchematicEditor
         }
         private void TexboxToolStripMenuItem_TextChanged(object sender, EventArgs e)
         {
-            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
-            modelConvertAndSize.IsPageInNumbers(this, Singleton.Instance.Page);
-            ViewController2 viewController2 = new ViewController2(this);
+            LogicSupportingPageEditionsSelectedByTheUser modelConvertAndSize = new LogicSupportingPageEditionsSelectedByTheUser();
+            modelConvertAndSize.IsPageInNumbers(this, SingletonInformationStorage.Instance.Page);
+            SecondWindowSupport viewController2 = new SecondWindowSupport(this);
             viewController2.IsGreen();
         }
         private void A3_And_A2_Menu_Click(object sender, EventArgs e)
         {
-            ViewController2 viewController2 = new ViewController2(this);
+            SecondWindowSupport viewController2 = new SecondWindowSupport(this);
             viewController2.CheckedMenuOption(sender);
         }
 
         private void SkirtsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
+            LogicSupportingPageEditionsSelectedByTheUser modelConvertAndSize = new LogicSupportingPageEditionsSelectedByTheUser();
             modelConvertAndSize.Skirts(this);
         }
 
         private void A4x2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            ModelConvertAndSize modelConvertAndSize= new ModelConvertAndSize();
-            modelConvertAndSize.Where(Singleton.Instance.Page);
+            LogicSupportingPageEditionsSelectedByTheUser modelConvertAndSize= new LogicSupportingPageEditionsSelectedByTheUser();
+            modelConvertAndSize.Where(SingletonInformationStorage.Instance.Page);
             modelConvertAndSize.SizeforA3();
         }
 
         private void A4x4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModelConvertAndSize modelConvertAndSize = new ModelConvertAndSize();
-            modelConvertAndSize.Where(Singleton.Instance.Page);
+            LogicSupportingPageEditionsSelectedByTheUser modelConvertAndSize = new LogicSupportingPageEditionsSelectedByTheUser();
+            modelConvertAndSize.Where(SingletonInformationStorage.Instance.Page);
             modelConvertAndSize.SizeforA2();
+        }
+
+        private void PanelMouseSupport_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

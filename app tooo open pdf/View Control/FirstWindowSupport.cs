@@ -18,12 +18,12 @@ using System.Security.RightsManagement;
 
 namespace PdfSchematicEditor
 {
-    public class ViewController
+    public class FirstWindowSupport
     {
       
         
-        private FormController1 formController;
-        public ViewController(FormController1 formController)
+        private FileSelectionWindowController formController;
+        public FirstWindowSupport(FileSelectionWindowController formController)
         {
             this.formController = formController;
         }
@@ -41,17 +41,17 @@ namespace PdfSchematicEditor
                 // Get the path of the selected file
                string filePath = openFileDialog.FileName;
 
-                // aktualizacja wartości pola FilePath w klasie Singleton
-                Singleton.Instance.FilePath = filePath;
+                // aktualizacja wartości pola FilePath w klasie SingletonInformationStorage
+                SingletonInformationStorage.Instance.FilePath = filePath;
 
-                // zapisanie wartości pola FilePath do pliku w klasie Singleton
-                Singleton.Instance.SaveToFile();
+                // zapisanie wartości pola FilePath do pliku w klasie SingletonInformationStorage
+                SingletonInformationStorage.Instance.SaveToFile();
             }
         }
 
         public void UpdateWebBrowser()
         {
-            formController.WebBrowser1.Navigate(Singleton.Instance.FilePath);
+            formController.WebBrowser1.Navigate(SingletonInformationStorage.Instance.FilePath);
         }
         public void CheckedMenuOption(object sender) 
         {

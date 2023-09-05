@@ -12,16 +12,16 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PdfSchematicEditor
 {
-    public class ViewController2
+    public class SecondWindowSupport
     {
 
-        private FormController2 formController;
-        private int maxPage = Singleton.Instance.MaxPage;
-        int page = Singleton.Instance.Page;
-        string outFilleName = Singleton.Instance.OutFilleName;
-        string newFilleName =Singleton.Instance.NewFilleName;
+        private PageSelectionAndEditingWindowController formController;
+        private int maxPage = SingletonInformationStorage.Instance.MaxPage;
+        int page = SingletonInformationStorage.Instance.Page;
+        string outFilleName = SingletonInformationStorage.Instance.OutFilleName;
+        string newFilleName = SingletonInformationStorage.Instance.NewFilleName;
         
-        public ViewController2(FormController2 formController)
+        public SecondWindowSupport(PageSelectionAndEditingWindowController formController)
         {
             this.formController = formController;
         }
@@ -35,7 +35,7 @@ namespace PdfSchematicEditor
                 
                 if (outFilleName != newFilleName )
                 {
-                    Singleton.Instance.OutFilleName = newFilleName;
+                    SingletonInformationStorage.Instance.OutFilleName = newFilleName;
                     formController.PictureOpen.Image.Dispose();
                     formController.PictureOpen.Image = null;
                 }
@@ -44,7 +44,7 @@ namespace PdfSchematicEditor
                 formController.PictureOpen.Image = image;
                 formController.PictureOpen.SizeMode = PictureBoxSizeMode.Zoom;
                 formController.LabelPageAndMaxPage.Text = $"Strona {page} z {maxPage}";
-                Singleton.Instance.Page = page;
+                SingletonInformationStorage.Instance.Page = page;
                 IsGreen();
             }
         }
@@ -55,7 +55,7 @@ namespace PdfSchematicEditor
 
         public void IsGreen()
         {
-            if (Singleton.Instance.IsPageInNumbers) 
+            if (SingletonInformationStorage.Instance.IsPageInNumbers) 
             {
                 formController.ColorDot.ForeColor = Color.FromArgb(128, 0, 255, 0);
             }

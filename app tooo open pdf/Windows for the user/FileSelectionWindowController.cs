@@ -11,24 +11,24 @@ using Path = System.IO.Path;
 namespace PdfSchematicEditor
 {
 
-    public partial class FormController1 : Form
+    public partial class FileSelectionWindowController : Form
     {
   
-        private ViewFormController viewFormController;
-        private ViewController viewController;
-        public FormController1()
+        private ControlOfBasicFunctionsAllWindow viewFormController;
+        private FirstWindowSupport viewController;
+        public FileSelectionWindowController()
         {
             InitializeComponent();
-            viewController = new ViewController(this);
-          viewFormController = new ViewFormController(this);
+            viewController = new FirstWindowSupport(this);
+          viewFormController = new ControlOfBasicFunctionsAllWindow(this);
             UpdateWebBrowser();
-            Singleton.Instance.FilePath = null;
+            SingletonInformationStorage.Instance.FilePath = null;
         }
 
         /// //////////////////////////////////////dodwanie plku po przez wybór windows 
         public void AddPdfBt_Click(object sender, EventArgs e)
         {
-            ViewController.OpenFileDialog();
+            FirstWindowSupport.OpenFileDialog();
           
             UpdateWebBrowser();
         }
@@ -43,20 +43,20 @@ namespace PdfSchematicEditor
 
         public void ConvertBt_Click(object sender, EventArgs e)
         { 
-            while (Singleton.Instance.FilePath ==null)
+            while (SingletonInformationStorage.Instance.FilePath ==null)
             {
                 AddPdfBt_Click(sender, e);
             };
             
-            var modelConvert = new ModelConvertAndSize();
+            var modelConvert = new LogicSupportingPageEditionsSelectedByTheUser();
             modelConvert.HowTOConvetPdf(this);//potem model ma sprawdzac która opcja zaznaczona i wywoływac odpowiednią metode 
 
-            string outputDirectory = Singleton.Instance.OutPutDirectory;
-            string outFilleName = $"{outputDirectory}" + "/" + $"{System.IO.Path.GetFileNameWithoutExtension(Singleton.Instance.FilePath)}_page1.png";
-            Singleton.Instance.OutFilleName = outFilleName;
-            Singleton.Instance.NewFilleName = outFilleName;
+            string outputDirectory = SingletonInformationStorage.Instance.OutPutDirectory;
+            string outFilleName = $"{outputDirectory}" + "/" + $"{System.IO.Path.GetFileNameWithoutExtension(SingletonInformationStorage.Instance.FilePath)}_page1.png";
+            SingletonInformationStorage.Instance.OutFilleName = outFilleName;
+            SingletonInformationStorage.Instance.NewFilleName = outFilleName;
             // Utworzenie nowego obiektu Form2
-            FormController2 form2 = new FormController2
+            PageSelectionAndEditingWindowController form2 = new PageSelectionAndEditingWindowController
             {
                 // Wywołanie metody Show() lub ShowDialog() na nowym obiekcie Form2
                 TopLevel = true
@@ -111,10 +111,10 @@ namespace PdfSchematicEditor
 
 //    if (textBox1.Text != null)
 //    {
-//        // odczytanie wartości pola FilePath z klasy Singleton
-//        string filePath = Singleton.Instance.FilePath;
+//        // odczytanie wartości pola FilePath z klasy SingletonInformationStorage
+//        string filePath = SingletonInformationStorage.Instance.FilePath;
 //        string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);
-//        string outputDirctory = Singleton.Instance.OutPutDirectory;
+//        string outputDirctory = SingletonInformationStorage.Instance.OutPutDirectory;
 //        string where = System.IO.Path.Combine(outputDirctory, $"{filenameWithoutExtension}_page{textBox1.Text}.png");
 //        ModelCusttomMesage modelCusttomMesage = new ModelCusttomMesage(where);
 //        modelCusttomMesage.ShowCustomMessageBox();

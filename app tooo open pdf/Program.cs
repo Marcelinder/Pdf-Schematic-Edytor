@@ -17,7 +17,7 @@ namespace PdfSchematicEditor
            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormController1());
+            Application.Run(new FileSelectionWindowController());
             
         }
     }

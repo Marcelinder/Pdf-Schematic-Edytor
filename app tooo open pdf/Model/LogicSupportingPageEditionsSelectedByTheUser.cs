@@ -14,16 +14,16 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PdfSchematicEditor
 {
-    internal class ModelConvertAndSize
+    internal class LogicSupportingPageEditionsSelectedByTheUser
     {
-        private string outputDirectory = Singleton.Instance.OutPutDirectory;
+        private string outputDirectory = SingletonInformationStorage.Instance.OutPutDirectory;
        private string where;
       
-        public ModelConvertAndSize()
+        public LogicSupportingPageEditionsSelectedByTheUser()
         {
         }
 
-        public void IsPageInNumbers(FormController2 formController, int pageInTextBox)
+        public void IsPageInNumbers(PageSelectionAndEditingWindowController formController, int pageInTextBox)
         {
 
             string textBoxValue = formController.TexboxToolStripMenuItem.Text; 
@@ -31,10 +31,10 @@ namespace PdfSchematicEditor
             int[] numbers = Array.ConvertAll(numbersAsString, int.Parse);
             
             bool isPageInNumbers = Array.Exists(numbers, element => element == pageInTextBox);
-            Singleton.Instance.IsPageInNumbers = isPageInNumbers;
+            SingletonInformationStorage.Instance.IsPageInNumbers = isPageInNumbers;
         }
 
-        public void HowTOConvetPdf(FormController1 formController)
+        public void HowTOConvetPdf(FileSelectionWindowController formController)
         {
           
             if (formController.ConvertFastToolStripMenuItem1.Checked == true)
@@ -55,7 +55,7 @@ namespace PdfSchematicEditor
             {
                 Directory.CreateDirectory(outputDirectory);
             }
-            string filePath = Singleton.Instance.FilePath;
+            string filePath = SingletonInformationStorage.Instance.FilePath;
           
 
             var settings = new MagickReadSettings
@@ -74,7 +74,7 @@ namespace PdfSchematicEditor
 
                 images.Read(filePath, settings);
                 int maxPage = images.Count;
-                Singleton.Instance.MaxPage = maxPage;
+                SingletonInformationStorage.Instance.MaxPage = maxPage;
                 stop.Stop();
                 TimeSpan time = stop.Elapsed;
 
@@ -100,7 +100,7 @@ namespace PdfSchematicEditor
             {
                 Directory.CreateDirectory(outputDirectory);
             }
-            string filePath = Singleton.Instance.FilePath;
+            string filePath = SingletonInformationStorage.Instance.FilePath;
             var settings = new MagickReadSettings
             {
           
@@ -121,7 +121,7 @@ namespace PdfSchematicEditor
 
                 images.Read(filePath, settings);
                 int maxPage = images.Count;
-                Singleton.Instance.MaxPage = maxPage;
+                SingletonInformationStorage.Instance.MaxPage = maxPage;
                 stop.Stop();
                 TimeSpan time = stop.Elapsed;
 
@@ -142,8 +142,8 @@ namespace PdfSchematicEditor
 
         public void SloswConvertPDFtoPNG()// problemy z pamięcią ale krótsze ładownie 
         {
-            // odczytanie wartości pola FilePath z klasy Singleton
-            string filePath = Singleton.Instance.FilePath;
+            // odczytanie wartości pola FilePath z klasy SingletonInformationStorage
+            string filePath = SingletonInformationStorage.Instance.FilePath;
           
             // Sprawdzam, czy istnieje katalog wyjściowy o podanej nazwie (outputDirectory),
             // a jeśli nie, tworze go
@@ -165,11 +165,11 @@ namespace PdfSchematicEditor
                     var pdfImages = new MagickImageCollection();
                     pdfImages.Read(pdfStream);
                     int maxPage = pdfImages.Count;
-                    // aktualizacja wartości pola FilePath w klasie Singleton
-                    Singleton.Instance.MaxPage = maxPage;
+                    // aktualizacja wartości pola FilePath w klasie SingletonInformationStorage
+                    SingletonInformationStorage.Instance.MaxPage = maxPage;
 
-                    // zapisanie wartości pola FilePath do pliku w klasie Singleton
-                    Singleton.Instance.SaveToFile();
+                    // zapisanie wartości pola FilePath do pliku w klasie SingletonInformationStorage
+                    SingletonInformationStorage.Instance.SaveToFile();
 
                     Parallel.ForEach(pdfImages, (pdfImage, state, i) =>
                     {
@@ -210,15 +210,15 @@ namespace PdfSchematicEditor
         }
 
 
-        public void Skirts(FormController2 formController)
+        public void Skirts(PageSelectionAndEditingWindowController formController)
         {
             if (formController.TexboxToolStripMenuItem.Text != "")
             {
                 
-                for (int i = 0; i <= Singleton.Instance.MaxPage; i++)
+                for (int i = 0; i <= SingletonInformationStorage.Instance.MaxPage; i++)
                 { 
                     IsPageInNumbers(formController, i);
-                    if (Singleton.Instance.IsPageInNumbers)
+                    if (SingletonInformationStorage.Instance.IsPageInNumbers)
                     {
                         Where(i);
                         WhatSizeIsChecked(formController);
@@ -227,20 +227,20 @@ namespace PdfSchematicEditor
             }
             else
             {
-                Where(Singleton.Instance.Page);
+                Where(SingletonInformationStorage.Instance.Page);
                 WhatSizeIsChecked(formController);
             }
         }
 
         public void Where(int i)
         {
-            string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(Singleton.Instance.FilePath);
+            string filenameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(SingletonInformationStorage.Instance.FilePath);
 
-            where = System.IO.Path.Combine(Singleton.Instance.outPutDirectory, $"{filenameWithoutExtension}_page{i}.png");
+            where = System.IO.Path.Combine(SingletonInformationStorage.Instance.outPutDirectory, $"{filenameWithoutExtension}_page{i}.png");
 
         }
 
-        public void WhatSizeIsChecked(FormController2 formController)
+        public void WhatSizeIsChecked(PageSelectionAndEditingWindowController formController)
         {
 
             if (formController.EnlargeMakeA2AndDivideIntoA4ToolStripMenuItem.Checked == true&& where!=null)
